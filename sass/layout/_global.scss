@@ -1,0 +1,14 @@
+.header {
+  @extend %container;
+}
+.main {
+  @extend %container;
+}
+
+.span1 {
+  @include span(1);
+}
+
+.span1last {
+ @include span(1 last);
+}

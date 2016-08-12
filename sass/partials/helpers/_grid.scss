@@ -1,0 +1,62 @@
+/**
+ * @file
+ *
+ * Grid configurations.
+ * https://www.youtube.com/watch?v=O8APW7ogrIw
+ * http://susy.readthedocs.org/en/latest/toolkit/
+ *
+ * Examples:
+ * @include span(1)
+ * margin-top: : span(1)
+ * width: container();
+ * @include full;
+ * @include bleed(0 1);
+ * @include gutters(3em before);
+ * margin-top:gutter();
+ * @include break;
+ * @include pre(2);
+ * @include pull(1);
+ * @include push(1);
+ * @include squish(2);
+ * @include prefix(1);
+ * @include suffix(1);
+ * @include pad(1);
+ *
+ */
+
+// $susy: (flow: ltr, math: fluid, container-position: $container-margin, columns: 4, gutters: 1 / 4, column-width: false, global-box-sizing: border-box, debug: (image: show));
+
+$susy: (
+  flow: ltr,
+  math: fluid,
+  container-position: $container-margin,
+  columns: 4, gutters: 1 / 4,
+  column-width: false,
+  global-box-sizing:border-box,
+  debug: (
+    image: show,
+    output: background overlay
+    )
+  );
+
+$susy-tablet: (columns: 12, gutters: 1 / 4, container-position: center);
+$susy-small-desktop: (columns: 12, gutters: 1 / 4);
+$susy-wide-desktop: (columns: 12, gutters: 1 / 8);
+
+%container {
+  @include container;
+
+  @include breakpoint($tablet) {
+    @include layout($susy-tablet);
+  }
+
+  @include breakpoint($desktop-small) {
+    @include layout($susy-small-desktop);
+    @include container($desktop-small-container);
+  }
+
+  @include breakpoint($desktop-wide) {
+    @include layout($susy-wide-desktop);
+    @include container($desktop-wide-container);
+  }
+}
